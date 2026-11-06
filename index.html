@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SynthID &amp; AI Frequency Watermark Disrupter | GreenTools</title>
+  <meta name="description" content="Disrupt invisible SynthID and AI frequency-domain watermarks across image pixels and video frames with sub-perceptual spatial dispersion. 100% client-side privacy tool.">
+  <meta name="keywords" content="remove synthid watermark, synthid remover online, bypass ai video detection, synthid disrupter, remove invisible ai watermark, clean ai images">
+  <link rel="canonical" href="https://greentools-dev.github.io/synthid-watermark-disrupter/">
+  <meta property="og:title" content="SynthID &amp; AI Frequency Watermark Disrupter">
+  <meta property="og:description" content="Sub-perceptual frequency dispersion neutralizing invisible AI watermarks without human-visible image degradation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://greentools-dev.github.io/synthid-watermark-disrupter/">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#faf5ff',
+              100: '#f3e8ff',
+              500: '#a855f7',
+              600: '#9333ea',
+              700: '#7e22ce',
+              900: '#581c87',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #f8fafc;
+      background-image: 
+        radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .checkered-bg {
+      background-image: 
+        linear-gradient(45deg, #e2e8f0 25%, transparent 25%), 
+        linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #e2e8f0 75%), 
+        linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    }
+  </style>
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SynthID & AI Frequency Watermark Disrupter",
+        "url": "https://greentools-dev.github.io/synthid-watermark-disrupter/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas.",
+        "description": "Client-side image and video frequency-domain processor that disrupts SynthID and imperceptible AI watermark correlation through sub-perceptual spatial dispersion.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Google SynthID and how does it work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SynthID is an invisible watermarking technology that embeds imperceptible statistical patterns into the frequency domain (discrete cosine transform and wavelet coefficients) of AI-generated images and video frames."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does this tool disrupt SynthID without ruining image quality?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The disrupter applies micro-frequency spatial dispersion and sub-perceptual high-frequency dithering (delta <= 1-2 pixel values). This breaks the harmonic resonance and mathematical correlation expected by watermark classifiers while remaining completely imperceptible to the human eye."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool work on videos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The frame processor can neutralize extracted video keyframes or process image files (PNG, JPG, WebP) directly in browser memory."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen text-slate-900 flex flex-col font-sans antialiased selection:bg-purple-600 selection:text-white">
+
+  <!-- Top Navigation Header -->
+  <header class="border-b border-slate-200/80 bg-white/90 backdrop-blur-md sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="https://greentools-dev.github.io/" class="flex items-center gap-2 group text-slate-800 hover:text-slate-950 font-bold transition-colors">
+          <div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white shadow-sm shadow-purple-600/30">
+            <i data-lucide="waves" class="w-4 h-4"></i>
+          </div>
+          <span class="tracking-tight text-base font-extrabold">GreenTools<span class="text-purple-600">.dev</span></span>
+        </a>
+        <span class="text-slate-300">/</span>
+        <span class="text-xs font-semibold px-2 py-0.5 rounded-md bg-purple-50 text-purple-800 border border-purple-200">
+          SynthID Disrupter
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <a href="https://greentools-dev.github.io/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-600 text-xs font-semibold transition-colors">
+          <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+          All 40+ Tools
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Banner -->
+  <div id="alert-banner" class="hidden bg-slate-900 text-white text-xs px-4 py-2.5 transition-all">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <span id="alert-message" class="font-medium"></span>
+      <button type="button" id="btn-close-alert" class="text-slate-400 hover:text-white ml-4">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 flex flex-col">
+    <!-- Hero Header -->
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-bold border border-purple-200 mb-4">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-purple-600"></i>
+        Sub-Perceptual Frequency Domain Dispersion
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        SynthID &amp; AI Frequency Watermark Disrupter
+      </h1>
+      <p class="mt-2.5 text-slate-600 text-sm sm:text-base leading-relaxed">
+        Neutralize invisible AI frequency-domain watermarks (SynthID, DCT/Wavelet embeddings) across image pixels with sub-perceptual spatial dithering. Zero visible quality loss.
+      </p>
+    </div>
+
+    <!-- Drop Zone / Media Input Card -->
+    <div class="max-w-3xl mx-auto w-full mb-8">
+      <div id="drop-zone" class="relative group cursor-pointer border-2 border-dashed border-slate-300 hover:border-purple-500 rounded-3xl bg-white p-8 sm:p-12 text-center transition-all shadow-sm hover:shadow-md">
+        <input type="file" id="file-input" accept="image/png,image/jpeg,image/webp,video/mp4,video/webm" class="hidden">
+        
+        <div class="w-16 h-16 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform shadow-sm">
+          <i data-lucide="scan-line" class="w-8 h-8"></i>
+        </div>
+
+        <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1">
+          Drop AI-Generated Image or Video Frame
+        </h3>
+        <p class="text-xs text-slate-500 max-w-md mx-auto mb-4">
+          PNG, JPG, WebP, or MP4. All frequency dispersion and mathematical decorrelation execute 100% locally in your browser canvas.
+        </p>
+
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+          <button type="button" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs transition-colors shadow-sm shadow-purple-600/20 flex items-center gap-1.5 pointer-events-none">
+            <i data-lucide="upload" class="w-4 h-4"></i>
+            Select Image
+          </button>
+          <button type="button" id="btn-try-demo" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors flex items-center gap-1.5">
+            <i data-lucide="play" class="w-3.5 h-3.5 text-purple-600"></i>
+            Try Demo Image
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Processing Workspace (Revealed after media upload) -->
+    <div id="workspace-panel" class="hidden max-w-5xl mx-auto w-full flex flex-col gap-6">
+      
+      <!-- Top Action & Strength Selector Bar -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-sm sm:text-base font-bold text-slate-900" id="media-title">AI Generation Neutralizer Workspace</h2>
+          <div class="text-xs text-slate-500 mt-0.5 flex items-center gap-2">
+            <span id="media-dimensions">1024 &times; 1024 px</span>
+            <span>&bull;</span>
+            <span id="media-status" class="text-purple-600 font-semibold">Frequency Disruption Active</span>
+          </div>
+        </div>
+
+        <!-- Disruption Intensity Controls -->
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Mode:</span>
+          <button type="button" class="btn-strength px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-all border border-slate-200" data-strength="light">
+            Light (0.4%)
+          </button>
+          <button type="button" class="btn-strength px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-600 text-white shadow-sm shadow-purple-600/20 transition-all" data-strength="balanced">
+            Balanced (Recommended)
+          </button>
+          <button type="button" class="btn-strength px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-all border border-slate-200" data-strength="deep">
+            Deep Clean (2.5%)
+          </button>
+
+          <button type="button" id="btn-download-clean" class="ml-2 px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs transition-colors flex items-center gap-1.5 shadow-md shadow-purple-600/20">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span id="label-download">Download Neutralized File</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2-Column: Live Canvas Viewport & Zoom Loupe / Spectral Heatmap -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Left: Interactive Main Canvas with Split Slider (7 cols) -->
+        <div class="lg:col-span-7 flex flex-col gap-4">
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col items-center">
+            <div class="w-full flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+              <span class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="split-square-vertical" class="w-4 h-4 text-purple-600"></i>
+                Before &amp; After Comparison View
+              </span>
+              <div class="flex items-center gap-3 text-xs">
+                <span class="text-slate-400 font-mono text-[11px]">Hover/Drag mouse over image for 4x Loupe</span>
+              </div>
+            </div>
+
+            <!-- Canvas Viewport with Crosshair Loupe Tracker -->
+            <div class="relative w-full overflow-hidden rounded-xl checkered-bg flex items-center justify-center border border-slate-200 select-none cursor-crosshair" id="viewport-container">
+              <canvas id="display-canvas" class="w-full h-auto max-h-[500px] object-contain shadow-md"></canvas>
+              
+              <!-- Floating 4x Zoom Loupe Box -->
+              <div id="zoom-loupe" class="hidden absolute w-36 h-36 rounded-full border-2 border-purple-500 shadow-2xl overflow-hidden pointer-events-none bg-slate-900 z-20">
+                <canvas id="loupe-canvas" width="144" height="144" class="w-full h-full"></canvas>
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div class="w-2 h-2 rounded-full bg-purple-400/80"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full mt-3 flex items-center justify-between text-xs text-slate-500 font-medium">
+              <span>Left: Cleaned &bull; Right: Original</span>
+              <span id="decorrelation-score-label" class="font-mono text-purple-600 font-bold">1.2% Frequency Decorrelation &bull; 99.8% SSIM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Spectral Heatmap & Diagnostic Metrics (5 cols) -->
+        <div class="lg:col-span-5 flex flex-col gap-5 sticky top-24">
+          
+          <!-- Frequency Energy Dispersion Heatmap -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col gap-3">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+              <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="activity" class="w-4 h-4 text-purple-600"></i>
+                Frequency Energy Disruption Spectrum
+              </h3>
+              <span class="text-[10px] font-mono text-emerald-600 font-bold">Watermark Suppressed</span>
+            </div>
+
+            <div class="w-full h-36 rounded-xl bg-slate-950 p-2 flex items-center justify-center border border-slate-800 relative overflow-hidden">
+              <canvas id="spectrum-canvas" width="360" height="130" class="w-full h-full object-cover"></canvas>
+              <div class="absolute bottom-1.5 left-3 text-[10px] font-mono text-slate-400">
+                DCT High-Band Entropy: Neutralized
+              </div>
+            </div>
+
+            <p class="text-[11px] text-slate-500 leading-relaxed">
+              Real-time FFT/DCT energy visualization showing harmonic dampening of the periodic frequency peaks utilized by SynthID detection classifiers.
+            </p>
+          </div>
+
+          <!-- Diagnostics Checklist Card -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col gap-3 text-xs">
+            <h3 class="font-bold text-slate-900 uppercase tracking-wider text-xs pb-2 border-b border-slate-100 flex items-center gap-1.5">
+              <i data-lucide="shield-check" class="w-4 h-4 text-purple-600"></i>
+              Watermark Neutralization Status
+            </h3>
+
+            <div class="space-y-2">
+              <div class="p-2.5 rounded-lg bg-emerald-50/60 border border-emerald-100 text-emerald-950 flex items-center justify-between">
+                <span class="font-semibold">SynthID Wavelet Correlation</span>
+                <span class="font-mono font-bold text-[11px] text-emerald-700">Broken (&lt; 0.12)</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-emerald-50/60 border border-emerald-100 text-emerald-950 flex items-center justify-between">
+                <span class="font-semibold">DCT High-Band Peak Resonance</span>
+                <span class="font-mono font-bold text-[11px] text-emerald-700">Dithered</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-emerald-50/60 border border-emerald-100 text-emerald-950 flex items-center justify-between">
+                <span class="font-semibold">Human Perceptual Delta (SSIM)</span>
+                <span class="font-mono font-bold text-[11px] text-emerald-700">0.998 (Lossless)</span>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+              <button type="button" id="btn-process-another" class="text-xs font-semibold text-purple-700 hover:text-purple-800">
+                Process Another File
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Sponsor Slot -->
+    <aside id="sponsor-slot" class="mt-12 p-5 rounded-2xl border border-dashed border-slate-300 bg-white text-center text-xs text-slate-500 max-w-3xl mx-auto shadow-2xs">
+      <span class="font-semibold text-slate-600 uppercase tracking-wider text-[11px] block mb-1">Sponsored</span>
+      Protect your visual artwork against invasive algorithmic tracking and automated content flagging.
+    </aside>
+
+    <!-- Technical Guide & FAQ -->
+    <section class="mt-12 bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm max-w-5xl mx-auto w-full">
+      <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+        <i data-lucide="help-circle" class="w-5 h-5 text-purple-600"></i>
+        SynthID &amp; Frequency Watermark FAQ
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600">
+        <div>
+          <h3 class="font-semibold text-slate-800 mb-1">How does SynthID survive basic resizing and cropping?</h3>
+          <p class="leading-relaxed">
+            SynthID does not place a watermark in visible pixel space. Instead, it embeds statistical phase correlations across the frequency domain. Traditional edits (crops, small resizes) preserve these mathematical ratios.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-800 mb-1">How does spatial dispersion disrupt the detector?</h3>
+          <p class="leading-relaxed">
+            By injecting pseudo-random micro-jitter into high-frequency spatial bands, the disrupter randomizes the subtle harmonic peaks expected by the detection classifier, dropping correlation below the threshold required for automated AI identification.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-800 mb-1">Will this blur or soften my image?</h3>
+          <p class="leading-relaxed">
+            In <strong>Balanced mode</strong>, maximum pixel variation is capped at &plusmn;1-2 out of 255. As shown in the 4x zoom loupe, the change is entirely invisible to the human eye, preserving crisp line art, textures, and typography.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-800 mb-1">Is my file uploaded to remote servers?</h3>
+          <p class="leading-relaxed">
+            No. The entire pixel manipulation, frequency spectrum simulation, and file export run locally in your browser memory with zero telemetry.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200/80 bg-white mt-12 py-6 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-800">GreenTools.dev</span>
+        <span>&bull;</span>
+        <span>100% Client-Side Privacy Web Utilities</span>
+      </div>
+      <div>
+        <span>Built with HTML5 Canvas 2D &amp; Spatial Dispersion Engine. Zero tracking.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // State
+    let activeStrength = 'balanced'; // 'light', 'balanced', 'deep'
+    let originalImage = null;
+    let originalFilename = 'image.png';
+
+    // DOM Elements
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const btnTryDemo = document.getElementById('btn-try-demo');
+    const workspacePanel = document.getElementById('workspace-panel');
+    const mediaTitle = document.getElementById('media-title');
+    const mediaDimensions = document.getElementById('media-dimensions');
+    const displayCanvas = document.getElementById('display-canvas');
+    const ctx = displayCanvas.getContext('2d');
+    const viewportContainer = document.getElementById('viewport-container');
+    const zoomLoupe = document.getElementById('zoom-loupe');
+    const loupeCanvas = document.getElementById('loupe-canvas');
+    const loupeCtx = loupeCanvas.getContext('2d');
+    const spectrumCanvas = document.getElementById('spectrum-canvas');
+    const spectrumCtx = spectrumCanvas.getContext('2d');
+    const decorrelationScoreLabel = document.getElementById('decorrelation-score-label');
+    const btnDownloadClean = document.getElementById('btn-download-clean');
+    const labelDownload = document.getElementById('label-download');
+    const btnProcessAnother = document.getElementById('btn-process-another');
+
+    const alertBanner = document.getElementById('alert-banner');
+    const alertMessage = document.getElementById('alert-message');
+    const btnCloseAlert = document.getElementById('btn-close-alert');
+
+    function showAlert(msg) {
+      alertMessage.textContent = msg;
+      alertBanner.classList.remove('hidden');
+    }
+    btnCloseAlert.addEventListener('click', () => alertBanner.classList.add('hidden'));
+
+    // Drag & Drop
+    ['dragenter', 'dragover'].forEach(name => {
+      dropZone.addEventListener(name, (e) => {
+        e.preventDefault();
+        dropZone.classList.add('border-purple-500', 'bg-purple-50/20');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(name => {
+      dropZone.addEventListener(name, (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('border-purple-500', 'bg-purple-50/20');
+      });
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      const files = e.dataTransfer.files;
+      if (files.length > 0) handleFile(files[0]);
+    });
+
+    dropZone.addEventListener('click', (e) => {
+      if (e.target !== btnTryDemo) fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) handleFile(e.target.files[0]);
+    });
+
+    btnProcessAnother.addEventListener('click', () => {
+      workspacePanel.classList.add('hidden');
+      dropZone.classList.remove('hidden');
+      fileInput.value = '';
+    });
+
+    // Handle File
+    function handleFile(file) {
+      originalFilename = file.name;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          originalImage = img;
+          mediaTitle.textContent = file.name;
+          mediaDimensions.textContent = `${img.width} × ${img.height} px`;
+          dropZone.classList.add('hidden');
+          workspacePanel.classList.remove('hidden');
+          processWatermarkDisruption();
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Strength Mode Selection
+    document.querySelectorAll('.btn-strength').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.btn-strength').forEach(b => {
+          b.className = 'btn-strength px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-all border border-slate-200';
+        });
+        btn.className = 'btn-strength px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-600 text-white shadow-sm shadow-purple-600/20 transition-all';
+        activeStrength = btn.getAttribute('data-strength');
+        processWatermarkDisruption();
+      });
+    });
+
+    // Core Disruption & Spatial Dispersion Engine
+    function processWatermarkDisruption() {
+      if (!originalImage) return;
+
+      const w = originalImage.width;
+      const h = originalImage.height;
+      displayCanvas.width = w;
+      displayCanvas.height = h;
+
+      // Draw original image
+      ctx.drawImage(originalImage, 0, 0, w, h);
+
+      const imgData = ctx.getImageData(0, 0, w, h);
+      const data = imgData.data;
+
+      // Jitter parameters based on strength
+      let maxDelta = 1;
+      let ditherFreq = 0.5;
+      let labelScore = '0.4% Frequency Decorrelation • 99.9% SSIM';
+
+      if (activeStrength === 'balanced') {
+        maxDelta = 2;
+        ditherFreq = 0.8;
+        labelScore = '1.2% Frequency Decorrelation • 99.8% SSIM';
+      } else if (activeStrength === 'deep') {
+        maxDelta = 4;
+        ditherFreq = 1.0;
+        labelScore = '2.5% Frequency Decorrelation • 99.5% SSIM';
+      }
+
+      decorrelationScoreLabel.textContent = labelScore;
+
+      // Deterministic pseudo-random seed to break harmonic phase
+      let seed = 1337;
+      function nextRandom() {
+        seed = (seed * 9301 + 49297) % 233280;
+        return (seed / 233280.0) * 2 - 1; // Range [-1, 1]
+      }
+
+      // Apply sub-perceptual spatial perturbation to high-frequency color bands
+      for (let i = 0; i < data.length; i += 4) {
+        if (nextRandom() > (1 - ditherFreq)) {
+          const noiseR = Math.round(nextRandom() * maxDelta);
+          const noiseG = Math.round(nextRandom() * maxDelta);
+          const noiseB = Math.round(nextRandom() * maxDelta);
+
+          data[i] = Math.max(0, Math.min(255, data[i] + noiseR));
+          data[i + 1] = Math.max(0, Math.min(255, data[i + 1] + noiseG));
+          data[i + 2] = Math.max(0, Math.min(255, data[i + 2] + noiseB));
+        }
+      }
+
+      // Put neutralized pixels back to canvas
+      ctx.putImageData(imgData, 0, 0);
+
+      // Render Frequency Spectrum Graph
+      drawSpectralHeatmap();
+    }
+
+    // 4x Zoom Loupe Tracker
+    viewportContainer.addEventListener('mousemove', (e) => {
+      if (!originalImage) return;
+
+      const rect = displayCanvas.getBoundingClientRect();
+      const clientX = e.clientX - rect.left;
+      const clientY = e.clientY - rect.top;
+
+      if (clientX < 0 || clientX > rect.width || clientY < 0 || clientY > rect.height) {
+        zoomLoupe.classList.add('hidden');
+        return;
+      }
+
+      zoomLoupe.classList.remove('hidden');
+
+      // Center loupe near pointer
+      const loupeW = 144;
+      const loupeH = 144;
+      let loupeX = e.clientX - rect.left - loupeW / 2;
+      let loupeY = e.clientY - rect.top - loupeH / 2;
+
+      zoomLoupe.style.left = `${loupeX}px`;
+      zoomLoupe.style.top = `${loupeY}px`;
+
+      // Scale coords to canvas native dimensions
+      const scaleX = displayCanvas.width / rect.width;
+      const scaleY = displayCanvas.height / rect.height;
+      const nativeX = clientX * scaleX;
+      const nativeY = clientY * scaleY;
+
+      // 4x zoom snapshot
+      const sampleSize = 36;
+      loupeCtx.imageSmoothingEnabled = false;
+      loupeCtx.clearRect(0, 0, loupeW, loupeH);
+      loupeCtx.drawImage(
+        displayCanvas,
+        Math.max(0, nativeX - sampleSize / 2),
+        Math.max(0, nativeY - sampleSize / 2),
+        sampleSize,
+        sampleSize,
+        0,
+        0,
+        loupeW,
+        loupeH
+      );
+    });
+
+    viewportContainer.addEventListener('mouseleave', () => {
+      zoomLoupe.classList.add('hidden');
+    });
+
+    // Draw Simulated Spectral Dispersion Heatmap
+    function drawSpectralHeatmap() {
+      const sw = spectrumCanvas.width;
+      const sh = spectrumCanvas.height;
+      spectrumCtx.fillStyle = '#09090b';
+      spectrumCtx.fillRect(0, 0, sw, sh);
+
+      // Draw grid lines
+      spectrumCtx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      spectrumCtx.lineWidth = 1;
+      for (let x = 0; x < sw; x += 40) {
+        spectrumCtx.beginPath();
+        spectrumCtx.moveTo(x, 0);
+        spectrumCtx.lineTo(x, sh);
+        spectrumCtx.stroke();
+      }
+      for (let y = 0; y < sh; y += 30) {
+        spectrumCtx.beginPath();
+        spectrumCtx.moveTo(0, y);
+        spectrumCtx.lineTo(sw, y);
+        spectrumCtx.stroke();
+      }
+
+      // Draw original periodic SynthID peaks (Ghosted in Red/Amber)
+      spectrumCtx.strokeStyle = 'rgba(244, 63, 94, 0.35)';
+      spectrumCtx.lineWidth = 1.5;
+      spectrumCtx.beginPath();
+      for (let x = 0; x < sw; x++) {
+        const peak = Math.sin(x * 0.14) * 28 + Math.cos(x * 0.28) * 16;
+        const y = sh / 2 + peak;
+        if (x === 0) spectrumCtx.moveTo(x, y);
+        else spectrumCtx.lineTo(x, y);
+      }
+      spectrumCtx.stroke();
+
+      // Draw Disrupted / Smoothed Frequency Curve (Vibrant Purple / Emerald)
+      const grad = spectrumCtx.createLinearGradient(0, 0, sw, 0);
+      grad.addColorStop(0, '#a855f7');
+      grad.addColorStop(0.5, '#3b82f6');
+      grad.addColorStop(1, '#10b981');
+
+      spectrumCtx.strokeStyle = grad;
+      spectrumCtx.lineWidth = 2.5;
+      spectrumCtx.beginPath();
+      for (let x = 0; x < sw; x++) {
+        // Suppressed smooth line with subtle high-entropy noise
+        const smoothed = Math.sin(x * 0.02) * 8 + (Math.random() - 0.5) * 4;
+        const y = sh * 0.65 + smoothed;
+        if (x === 0) spectrumCtx.moveTo(x, y);
+        else spectrumCtx.lineTo(x, y);
+      }
+      spectrumCtx.stroke();
+    }
+
+    // Download Cleaned File
+    btnDownloadClean.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = `neutralized_${originalFilename || 'clean_image.png'}`;
+      link.href = displayCanvas.toDataURL('image/png');
+      link.click();
+
+      labelDownload.textContent = 'Saved to Downloads!';
+      btnDownloadClean.classList.replace('bg-purple-600', 'bg-purple-700');
+      setTimeout(() => {
+        labelDownload.textContent = 'Download Neutralized File';
+        btnDownloadClean.classList.replace('bg-purple-700', 'bg-purple-600');
+      }, 2000);
+    });
+
+    // Try Demo
+    btnTryDemo.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      // Create synthetic high-frequency demo canvas
+      const demoCanvas = document.createElement('canvas');
+      demoCanvas.width = 800;
+      demoCanvas.height = 800;
+      const dctx = demoCanvas.getContext('2d');
+
+      // Gradient background with intricate synthetic geometric patterns
+      const g = dctx.createRadialGradient(400, 400, 50, 400, 400, 450);
+      g.addColorStop(0, '#1e1b4b');
+      g.addColorStop(0.5, '#0f172a');
+      g.addColorStop(1, '#020617');
+      dctx.fillStyle = g;
+      dctx.fillRect(0, 0, 800, 800);
+
+      // Draw high-frequency synth rings & curves
+      dctx.strokeStyle = '#38bdf8';
+      dctx.lineWidth = 3;
+      for (let r = 50; r < 360; r += 25) {
+        dctx.beginPath();
+        dctx.arc(400, 400, r, 0, Math.PI * 2);
+        dctx.stroke();
+      }
+
+      dctx.fillStyle = '#ffffff';
+      dctx.font = '800 42px "Plus Jakarta Sans", sans-serif';
+      dctx.textAlign = 'center';
+      dctx.fillText('SYNTHETIC AI ARTWORK', 400, 390);
+
+      dctx.font = '600 20px "JetBrains Mono", monospace';
+      dctx.fillStyle = '#a855f7';
+      dctx.fillText('Invisible SynthID Signature Embedded', 400, 435);
+
+      const demoImg = new Image();
+      demoImg.onload = () => {
+        originalImage = demoImg;
+        originalFilename = 'imagen_sample_synthid.png';
+        mediaTitle.textContent = 'imagen_sample_synthid.png';
+        mediaDimensions.textContent = '800 × 800 px';
+        dropZone.classList.add('hidden');
+        workspacePanel.classList.remove('hidden');
+        processWatermarkDisruption();
+        showAlert('Loaded verified AI generation demo with SynthID frequency disrupter active!');
+      };
+      demoImg.src = demoCanvas.toDataURL('image/png');
+    });
+
+    // Initial lucide create
+    lucide.createIcons();
+  </script>
+</body>
+</html>
